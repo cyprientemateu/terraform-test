@@ -22,3 +22,12 @@ variable "availability_zones" {
   type    = list(string)
   default = ["us-east-1a", "us-east-1b", "us-east-1c"]
 }
+variable "backend" {
+  type = map(string)
+  default = {
+    bucket         = ""
+    dynamodb_table = ""
+    key            = ""
+    region         = ""
+  }
+}

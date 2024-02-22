@@ -12,7 +12,7 @@ provider "aws" {
   region = var.aws_region
 }
 
-resource "aws_internet_gateway" "igw" {
+resource "aws_internet_gateway" "tcc_igw" {
   vpc_id = aws_vpc.main.id
 
   tags = {
@@ -20,7 +20,7 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
-resource "aws_vpc" "main" {
+resource "aws_vpc" "tcc_vpc" {
   cidr_block           = var.vpc_cidr
   enable_dns_support   = true
   enable_dns_hostnames = true
@@ -33,7 +33,7 @@ resource "aws_vpc" "main" {
 
 resource "aws_subnet" "public" {
   count                   = length(var.public_subnet_cidrs)
-  vpc_id                  = aws_vpc.main.id
+  vpc_id                  = aws_vpc.tcc_vpc.id
   cidr_block              = var.public_subnet_cidrs[count.index]
   availability_zone       = element(var.availability_zones, count.index)
   map_public_ip_on_launch = true
@@ -45,7 +45,7 @@ resource "aws_subnet" "public" {
 
 resource "aws_subnet" "private" {
   count             = length(var.private_subnet_cidrs)
-  vpc_id            = aws_vpc.main.id
+  vpc_id            = aws_vpc.tcc_vpc.id
   cidr_block        = var.private_subnet_cidrs[count.index]
   availability_zone = element(var.availability_zones, count.index)
 
@@ -54,21 +54,21 @@ resource "aws_subnet" "private" {
   }
 }
 
-resource "aws_nat_gateway" "nat" {
+resource "aws_nat_gateway" "tcc_nat" {
   count         = length(var.private_subnet_cidrs)
   subnet_id     = element(aws_subnet.public[*].id, count.index)
-  allocation_id = element(aws_eip.nat[*].id, count.index)
+  allocation_id = element(aws_eip.tcc_eip[*].id, count.index)
 
   tags = {
-    Name = "${var.vpc_name}-nat-gateway-${count.index + 1}"
+    Name = "${var.vpc_name}-tcc_nat-gateway-${count.index + 1}"
   }
 }
 
-resource "aws_eip" "nat" {
+resource "aws_eip" "tcc_eip" {
   count = length(var.private_subnet_cidrs)
 
   tags = {
-    Name = "${var.vpc_name}-nat-eip-${count.index + 1}"
+    Name = "${var.vpc_name}-tcc_eip-${count.index + 1}"
   }
 }
 
