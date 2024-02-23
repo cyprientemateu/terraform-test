@@ -15,6 +15,10 @@ output "eip_ids" {
   value = aws_eip.tcc_eip[*].id
 }
 
+output "eip_tags" {
+  value = aws_eip.tcc_eip[*].tags
+}
+
 output "nat_ids" {
   value = aws_nat_gateway.tcc_nat[*].id
 }
