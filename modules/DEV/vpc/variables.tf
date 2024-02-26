@@ -25,9 +25,9 @@ variable "availability_zones" {
 variable "backend" {
   type = map(string)
   default = {
-    bucket         = ""
-    dynamodb_table = ""
-    key            = ""
-    region         = ""
+    bucket         = "cyprienbucket"
+    dynamodb_table = "terraform-lock"
+    key            = "tcc/terraform.tfstate"
+    region         = "us-east-1"
   }
 }

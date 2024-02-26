@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = "cyprienbucket"
-    dynamodb_table = "terraform-lock"
-    key            = "tcc/terraform.tfstate"
-    region         = "us-east-1"
+    bucket         = var.backend["bucket"]
+    dynamodb_table = var.backend["dynamodb_table"]
+    key            = var.backend["key"]
+    region         = var.backend["region"]
     encrypt        = true
   }
 }
