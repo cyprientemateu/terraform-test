@@ -15,9 +15,8 @@ tags = {
   "cloud_provider" = "aws"
 }
 
-backend = {
-  bucket         = ""
-  dynamodb_table = ""
-  key            = ""
-  region         = ""
-}
+tcc_ports = [
+  22,
+  80,
+  8080
+]
