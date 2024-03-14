@@ -1,4 +1,4 @@
-resource "aws_instance" "example" {
+resource "aws_instance" "tcc_ec2" {
   ami                    = data.aws_ami.custom_ami.id
   instance_type          = var.instance_type
   key_name               = var.key_name

@@ -1,23 +1,23 @@
 output "instance-ami" {
-  value = aws_instance.example.ami
+  value = aws_instance.tcc_ec2.ami
 }
 
 output "instance-subnet-id" {
-  value = aws_instance.example.subnet_id
+  value = aws_instance.tcc_ec2.subnet_id
 }
 
 output "instance-arn" {
-  value = aws_instance.example.arn
+  value = aws_instance.tcc_ec2.arn
 }
 
 output "instance-az" {
-  value = aws_instance.example.availability_zone
+  value = aws_instance.tcc_ec2.availability_zone
 }
 
 output "instance-host-id" {
-  value = aws_instance.example.host_id
+  value = aws_instance.tcc_ec2.host_id
 }
 
 output "instance-public-ip" {
-  value = aws_instance.example.public_ip
+  value = aws_instance.tcc_ec2.public_ip
 }

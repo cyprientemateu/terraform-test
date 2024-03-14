@@ -41,8 +41,9 @@ resource "aws_rds_cluster" "tcc_db_cluster" {
   engine                  = var.engine
   engine_version          = var.engine_version
   availability_zones      = var.avalability_zones
-  master_username         = var.master_username
-  master_password         = random_password.password.result
+  database_name           = var.database_name
+  master_username         = local.tcc-db-creds.master_username
+  master_password         = local.tcc-db-creds.master_password
   db_subnet_group_name    = aws_db_subnet_group.tcc_rds_subnet_group.name
   vpc_security_group_ids  = [aws_security_group.tcc_rds_sg.id]
   skip_final_snapshot     = true
@@ -53,11 +54,6 @@ resource "aws_rds_cluster" "tcc_db_cluster" {
   tags = {
     Name = var.cluster_identifier
   }
-}
-
-resource "random_password" "password" {
-  length  = 16
-  special = true
 }
 
 resource "aws_rds_cluster_instance" "tcc_db_instances" {

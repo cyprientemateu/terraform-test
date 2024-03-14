@@ -1,5 +1,6 @@
 resource "aws_nat_gateway" "tcc_nat" {
-  count         = length(var.private_subnet_cidrs)
+  count = length(var.private_subnet_cidrs)
+  # count         = var.tags["environment"] == "development" ? length(var.availability_zones) : var.nat_number
   subnet_id     = element(aws_subnet.public[*].id, count.index)
   allocation_id = element(aws_eip.tcc_eip[*].id, count.index)
 

@@ -23,6 +23,11 @@ variable "vpc_security_group_ids" {
   default = ["sg-0fa88e0bcf2d36083"]
 }
 
+variable "vpc_id" {
+  type    = string
+  default = "vpc-026a1034816688c1d"
+}
+
 variable "subnet_id" {
   type    = string
   default = "subnet-02e286c9bdfb33f0b"

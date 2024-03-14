@@ -9,5 +9,11 @@ terraform {
 }
 
 provider "aws" {
-  region = var.aws_region
+  alias  = "state"
+  region = var.primary_region
+}
+
+provider "aws" {
+  alias  = "backup"
+  region = var.replica_region
 }

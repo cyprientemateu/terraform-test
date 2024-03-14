@@ -1,8 +1,8 @@
 resource "aws_security_group" "tcc_sg" {
-  name        = "tcc_sg"
+  name        = "tcc1_sg"
   description = "Security group for my EC2 instance"
 
-  vpc_id = var.vpc_id
+  vpc_id = aws_vpc.tcc_vpc.id
 
   // Inbound rules
   ingress {

@@ -73,6 +73,12 @@ variable "master_username" {
   default     = "carlos"
 }
 
+variable "database_name" {
+  description = "The username for the master user."
+  type        = string
+  default     = "tcc-db"
+}
+
 variable "backup_retention_period" {
   description = "The number of days during which automatic DB snapshots are retained."
   type        = number
