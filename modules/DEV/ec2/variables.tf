@@ -20,7 +20,7 @@ variable "key_name" {
 
 variable "vpc_security_group_ids" {
   type    = list(string)
-  default = ["sg-0fa88e0bcf2d36083"]
+  default = [aws_security_group.tcc_sg.id]
 }
 
 variable "vpc_id" {
