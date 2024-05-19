@@ -7,6 +7,7 @@ find . -type f -name '.terraform.tfstate' -exec rm -f {} +
 find . -type f -name '.terraform.lock.hcl' -exec rm -f {} +
 find . -type f -name 'terraform.tfstate' -exec rm -f {} +
 find . -type f -name 'terraform.tfstate.backup' -exec rm -f {} +
+find . -type f -name '.terraform.tfstate.lock.info' -exec rm -f {} +
 
 # find . -type f -name 'terraform.tfstate' -exec rm -f {} +
 # find . -type f -name 'terraform.tfstate.backup' -exec rm -f {} +

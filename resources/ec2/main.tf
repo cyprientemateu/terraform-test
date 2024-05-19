@@ -1,9 +1,9 @@
 terraform {
-  required_version = "~> 1.0.0"
+  required_version = ">= 1.0.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "~> 4.0"
     }
   }
 }
@@ -14,10 +14,10 @@ provider "aws" {
 
 # terraform {
 #   backend "s3" {
-#     bucket         = ""
-#     dynamodb_table = ""
-#     key            = ""
-#     region         = ""
+#     bucket         = "main-backend-tcc-1119"
+#     dynamodb_table = "dynamodb-tcc-1119"
+#     key            = "teraform-test/ec2/terraform.tfstate"
+#     region         = "us-east-1"
 #   }
 # }
 
@@ -27,11 +27,15 @@ locals {
   instance_type          = "t2.micro"
   key_name               = "terraform"
   vpc_security_group_ids = ["sg-0fa88e0bcf2d36083"]
-  subnet_id              = "subnet-02e286c9bdfb33f0b"
-  volume_size            = "10"
+  # subnet_id                     = "subnet-02e286c9bdfb33f0b"
+  enable_termination_protection = false
+  volume_size                   = "10"
+  allowed_ports = [
+    22
+  ]
   tags = {
     "id"             = "1119"
-    "owner"          = "TCC"
+    "owner"          = "tcc"
     "teams"          = "Devops"
     "environment"    = "development"
     "project"        = "a1"
@@ -47,7 +51,6 @@ module "ec2" {
   instance_type          = local.instance_type
   key_name               = local.key_name
   vpc_security_group_ids = local.vpc_security_group_ids
-  subnet_id              = local.subnet_id
   volume_size            = local.volume_size
   tags                   = local.tags
 }

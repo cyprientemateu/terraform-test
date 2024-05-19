@@ -1,0 +1,55 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: poddisruptionbudgets.policy.k8s.io
+  annotations:
+    api-approved.kubernetes.io: unapproved
+spec:
+  group: policy.k8s.io
+  names:
+    kind: PodDisruptionBudget
+    listKind: PodDisruptionBudgetList
+    plural: poddisruptionbudgets
+    singular: poddisruptionbudget
+  scope: Namespaced
+  versions:
+  - name: v1beta1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              minAvailable:
+                type: integer
+              maxUnavailable:
+                type: integer
+              selector:
+                type: object
+                properties:
+                  matchLabels:
+                    type: object
+                    additionalProperties:
+                      type: string
+                  matchExpressions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                        operator:
+                          type: string
+                          enum:
+                          - In
+                          - NotIn
+                          - Exists
+                          - DoesNotExist
+                        values:
+                          type: array
+                          items:
+                            type: string
+
