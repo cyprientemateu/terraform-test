@@ -54,7 +54,7 @@ locals {
 }
 
 module "eks1" {
-  source                    = "../../modules/DEV/eks1"
+  source                    = "../../modules/eks1"
   aws_region                = local.aws_region
   eks_version               = local.eks_version
   endpoint_private_access   = local.endpoint_private_access

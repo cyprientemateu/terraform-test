@@ -33,7 +33,7 @@ locals {
 }
 
 module "s3" {
-  source = "../../modules/DEV/s3"
+  source = "../../modules/s3"
   #   region        = local.aws_region
   random_s3     = local.random_s3
   s3_versioning = local.s3_versioning

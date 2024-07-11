@@ -33,7 +33,7 @@ locals {
 }
 
 module "vpc" {
-  source     = "../../modules/DEV/vpc"
+  source     = "../../modules/vpc"
   aws_region = local.aws_region
   # vpc_name             = local.vpc_name
   vpc_cidr             = local.vpc_cidr

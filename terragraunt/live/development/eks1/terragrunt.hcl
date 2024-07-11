@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../../modules/DEV//eks1"
+  source = "../../../../modules//eks1"
 }
 
 # Include all settings from the root terragrunt.hcl file

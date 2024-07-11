@@ -45,7 +45,7 @@ locals {
 }
 
 module "ec2" {
-  source                 = "../../modules/DEV/ec2"
+  source                 = "../../modules/ec2"
   aws_region             = local.aws_region
   ami                    = local.ami
   instance_type          = local.instance_type

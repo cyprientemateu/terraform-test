@@ -30,5 +30,5 @@ locals {
 }
 
 module "s3" {
-  source = "../../modules/DEV/s3-replication"
+  source = "../../modules/s3-replication"
 }

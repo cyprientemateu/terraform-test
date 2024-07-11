@@ -36,7 +36,7 @@ locals {
 }
 
 module "db" {
-  source                  = "../../modules/DEV/db"
+  source                  = "../../modules/db"
   aws_region              = local.aws_region
   vpc_id                  = local.vpc_id
   subnet_ids              = local.subnet_ids
