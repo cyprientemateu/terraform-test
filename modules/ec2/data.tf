@@ -1,13 +1,13 @@
-data "aws_ami" "custom_ami" {
-  most_recent = true
+# data "aws_ami" "custom_ami" {
+#   most_recent = true
 
-  filter {
-    name   = "name"
-    values = ["Jenkins-Master"]
-  }
+#   filter {
+#     name   = "name"
+#     values = ["Jenkins-Master"]
+#   }
 
-  owners = ["734028878759"]
-}
+#   owners = ["734028878759"]
+# }
 
 data "aws_vpc" "tcc_vpc" {
   filter {

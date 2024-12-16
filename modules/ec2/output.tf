@@ -1,6 +1,10 @@
-output "instance-ami" {
-  value = aws_instance.tcc_ec2.ami
-}
+# output "instance-ami" {
+#   value = aws_instance.tcc_ec2.ami
+# }
+
+# output "ami_id" {
+#   value = data.aws_ami.custom_ami.id
+# }
 
 output "instance-subnet-id" {
   value = aws_instance.tcc_ec2.subnet_id

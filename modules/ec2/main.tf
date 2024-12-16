@@ -1,5 +1,6 @@
 resource "aws_instance" "tcc_ec2" {
-  ami           = data.aws_ami.custom_ami.id
+  # ami           = data.aws_ami.custom_ami.id
+  ami           = var.ami
   instance_type = var.instance_type
   key_name      = var.key_name
   # vpc_security_group_ids  = [aws_security_group.tcc_sg.id]
