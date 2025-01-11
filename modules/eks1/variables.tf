@@ -37,13 +37,6 @@ variable "cluster_service_ipv4_cidr" {
 variable "tags" {
   type = map(any)
   default = {
-    "id"             = "1119"
-    "owner"          = "tcc"
-    "teams"          = "Devops"
-    "environment"    = "dev"
-    "project"        = "a1"
-    "create_by"      = "Terraform"
-    "cloud_provider" = "aws"
   }
 }
 

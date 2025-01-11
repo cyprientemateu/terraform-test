@@ -1,6 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: web1
+  labels:
+    app: web1
   name: web1-deployment
 spec:
   replicas: 3
@@ -17,4 +20,10 @@ spec:
         image: cyprientemateu/web1:latest
         ports:
         - containerPort: 80
-
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

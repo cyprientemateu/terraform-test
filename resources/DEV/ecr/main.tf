@@ -50,7 +50,7 @@ locals {
 }
 
 module "ec2" {
-  source = "../../modules/ecr"
+  source = "../../../modules/ecr"
   #   source        = "git@github.com:cyprientemateu/terraform-test/tree/main/modules/"
   aws_region    = local.aws_region
   tags          = local.tags

@@ -1,6 +1,6 @@
 aws_region = "us-east-1"
 
-cluster_name = "tcc_eks_cluster-1119-a1"
+cluster_name = "tcc-eks-cluster-1119-a1"
 
 eks_version = 1.29
 
@@ -14,7 +14,7 @@ tags = {
   "id"             = "1119"
   "owner"          = "tcc"
   "teams"          = "Devops"
-  "environment"    = "development"
+  "environment"    = "dev"
   "project"        = "a1"
   "create_by"      = "Terraform"
   "cloud_provider" = "aws"
