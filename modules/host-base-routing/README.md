@@ -8,7 +8,7 @@ You need to have you aws account setup, your ACM certificate, domain and hosted 
 
 - here's the link to acm code block:
 
-[Link To The repository:](https://github.com/cyprientemateu/terraform-test.git)
+![Link To The repository:](https://github.com/cyprientemateu/terraform-test.git)
 
 ```bash
 ### Link To The repository
@@ -103,31 +103,31 @@ terraform apply
 ![alb screenshot](images/alb.png)
 
 ### Blue Instance
-![Blue instace app screenshot](modules/host-base-routing/images/blue-instance-app.png)
+![Blue instace app screenshot](images/blue-instance-app.png)
 
 ### Green Instance
-![Green instance app screenshot](modules/host-base-routing/images/green-instance-app.png)
+![Green instance app screenshot](images/green-instance-app.png)
 
 ### Yellow Instance
-![Yellow instance app screenshot](modules/host-base-routing/images/yellow-instance-app.png)
+![Yellow instance app screenshot](images/yellow-instance-app.png)
 
 ### Certificate
-![Green instance app screenshot](modules/host-base-routing/images/certificate.png)
+![Green instance app screenshot](images/certificate.png)
 
 ### DNS 
-![DNS screenshot](modules/host-base-routing/images/dns-configuration.png)
+![DNS screenshot](images/dns-configuration.png)
 
 ### Instances
-![Instances screenshot](modules/host-base-routing/images/instances.png)
+![Instances screenshot](images/instances.png)
 
 ### Running Instances
-![Running instances screenshot](modules/host-base-routing/images/running-instances.png)
+![Running instances screenshot](images/running-instances.png)
 
 ### Target Groups
-![Target Groups screenshot](modules/host-base-routing/images/target-groups.png)
+![Target Groups screenshot](images/target-groups.png)
 
 ### terraform
-![Terraform code screenshot](modules/host-base-routing/images/terraform.png)
+![Terraform code screenshot](images/terraform.png)
 
 ## Future Improvements
 - Automate monitoring and alerts using CloudWatch or other tools.
