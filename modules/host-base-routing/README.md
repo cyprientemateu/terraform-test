@@ -8,7 +8,20 @@ You need to have you aws account setup, your ACM certificate, domain and hosted 
 
 - here's the link to acm code block:
 
-[Navigate to the project directory:](https://github.com/cyprientemateu/terraform-test.git/resources/acm)
+[Link To The repository:](https://github.com/cyprientemateu/terraform-test.git)
+
+```bash
+### Link To The repository
+git clone https://github.com/cyprientemateu/terraform-test.git
+
+### Navigate to the project directory
+cd modules/acm
+
+#### Make sure to adjust according to your environment.
+terraform init
+terraform plan
+terraform apply
+```
 
 ### Key Components:
 
@@ -87,7 +100,7 @@ terraform apply
 ## Screenshots
 
 ### ALB
-![alb screenshot](modules/host-base-routing/images/alb.png)
+![alb screenshot](images/alb.png)
 
 ### Blue Instance
 ![Blue instace app screenshot](modules/host-base-routing/images/blue-instance-app.png)
