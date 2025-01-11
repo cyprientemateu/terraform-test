@@ -8,7 +8,7 @@ You need to have you aws account setup, your ACM certificate, domain and hosted 
 
 - here's the link to acm code block:
 
-![Link To The repository:](https://github.com/cyprientemateu/terraform-test.git)
+![Link To The repository:](https://github.com/cyprientemateu/terraform-test/blob/main/modules/host-base-routing)
 
 ```bash
 ### Link To The repository
