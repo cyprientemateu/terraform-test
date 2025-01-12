@@ -25,10 +25,10 @@ resource "aws_security_group" "jenkins_sg" {
   #   }
 
   ingress {
-    from_port       = 22
-    to_port         = 22
-    protocol        = "tcp"
-    security_groups = ["0.0.0.0/0"]
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -44,7 +44,7 @@ resource "aws_launch_template" "jenkins_lt" {
   name          = "jenkins-launch-template"
   image_id      = "ami-0fce2513e5ec9147b"
   instance_type = "t2.medium"
-  key_name      = "terraform-aws"
+  key_name      = "terraform"
 
   block_device_mappings {
     device_name = "/dev/sda1"
@@ -113,9 +113,9 @@ resource "aws_autoscaling_policy" "scale_down" {
   autoscaling_group_name = aws_autoscaling_group.jenkins_asg.id
 }
 
-# CNAME Record for jenkins.devopseasylearnings.com
+# CNAME Record for jenkins.tccdevopse.com
 resource "aws_route53_record" "jenkins_cname" {
-  zone_id = "Z0470603FV80CHLYZC1U" # Replace with your actual hosted zone ID
+  zone_id = "Z05958021N024GP778US8" # Replace with your actual hosted zone ID
   name    = "jenkins"
   type    = "CNAME"
   ttl     = 300
