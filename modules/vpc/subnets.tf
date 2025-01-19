@@ -21,8 +21,9 @@ resource "aws_subnet" "private" {
 
   tags = {
     # Name                                        = "${var.vpc_name}-private-subnet-${count.index + 1}"
-    Name                                        = format("%s-%s-%s-private-subnet-${count.index + 1}-${element(var.availability_zones, count.index)}", var.tags["id"], var.tags["environment"], var.tags["project"])
-    "kubernetes.io/role/elb"                    = "1"
+    Name = format("%s-%s-%s-private-subnet-${count.index + 1}-${element(var.availability_zones, count.index)}", var.tags["id"], var.tags["environment"], var.tags["project"])
+    # "kubernetes.io/role/elb"                    = "1"
+    "kubernetes.io/role/internal-elb"           = "1"
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
 }
