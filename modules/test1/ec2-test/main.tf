@@ -8,8 +8,9 @@ resource "aws_instance" "example" {
 
   # Optional: Add a tag to the instance
   tags = {
-    Name   = "MyEC2Instance"
-    backup = true
+    Name    = "MyEC2Instance"
+    backup  = true
+    jenkins = true
   }
 
   # Optional: Create a security group that allows SSH access
