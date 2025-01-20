@@ -51,13 +51,13 @@ terraform apply
 
 ## Workflow
 
-+ Step 1: Terraform provisions the AWS infrastructure, including the ACM certificate, ELB, target group, EC2 instances, and DNS records in Route 53.
++ **Step 1:** Terraform provisions the AWS infrastructure, including the ACM certificate, ELB, target group, EC2 instances, and DNS records in Route 53.
  
-+ Step 2: The Elastic Load Balancer manages incoming traffic, distributing it to the EC2 instances based on the health checks defined in the target group.
++ **Step 2:** The Elastic Load Balancer manages incoming traffic, distributing it to the EC2 instances based on the health checks defined in the target group.
 
-+ Step 3: The ACM certificate ensures all traffic to the domain is encrypted, securing communication.
++ **Step 3:** The ACM certificate ensures all traffic to the domain is encrypted, securing communication.
 
-+ Step 4: Route 53 resolves the domain name and directs traffic to the load balancer.
++ **Step 4:** Route 53 resolves the domain name and directs traffic to the load balancer.
  
 ## Features
 - Scalable and Secure: The infrastructure can handle varying traffic loads while ensuring secure communication.
