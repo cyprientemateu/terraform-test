@@ -45,21 +45,31 @@ def lambda_handler(event, context):
             )
             print(f"AMI {response['ImageId']} created for instance {instance_id}")
 
-    # Clean up old AMIs
-    delete_old_amis(ec2)
+    # Clean up old AMIs and their snapshots
+    delete_old_amis_and_snapshots(ec2)
 
     return {
         'statusCode': 200,
         'body': 'AMI creation and cleanup process completed successfully.'
     }
 
-def delete_old_amis(ec2):
+def delete_old_amis_and_snapshots(ec2):
     # List all images with names starting with 's8-backup-'
     images = ec2.describe_images(Filters=[{'Name': 'name', 'Values': ['s8-backup-*']}])
     # Sort images by the creation date in descending order
     sorted_images = sorted(images['Images'], key=lambda x: x['CreationDate'], reverse=True)
     
-    # Keep the 2 most recent images, deregister the rest
+    # Keep the 2 most recent images, deregister the rest and delete associated snapshots
     for image in sorted_images[2:]:
-        ec2.deregister_image(ImageId=image['ImageId'])
-        print(f"Deregistered AMI {image['ImageId']} named {image['Name']}")
+        # Get the snapshot ID from the image's block device mapping
+        for block_device in image['BlockDeviceMappings']:
+            snapshot_id = block_device['Ebs']['SnapshotId']
+            
+            # Deregister the image
+            ec2.deregister_image(ImageId=image['ImageId'])
+            print(f"Deregistered AMI {image['ImageId']} named {image['Name']}")
+            
+            # Delete the associated snapshot
+            ec2.delete_snapshot(SnapshotId=snapshot_id)
+            print(f"Deleted Snapshot {snapshot_id} associated with AMI {image['ImageId']}")
+

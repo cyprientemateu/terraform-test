@@ -30,8 +30,9 @@ resource "aws_iam_policy" "lambda_policy" {
           "ec2:CreateImage",
           "ec2:DescribeInstances",
           "ec2:CreateTags",
-          "ec2:DescribeImages", // Permission to describe AMIs
-          "ec2:DeregisterImage" // Permission to deregister AMIs
+          "ec2:DescribeImages",  // Permission to describe AMIs
+          "ec2:DeregisterImage", // Permission to deregister AMIs
+          "ec2:DeleteSnapshot"   // Permission to delete EC2 snapshots
         ],
         Resource = "*"
       },
@@ -76,8 +77,8 @@ resource "aws_cloudwatch_log_group" "lambda_log_group" {
 # CloudWatch Event Rule
 resource "aws_cloudwatch_event_rule" "weekly_ami_backup" {
   name                = "weekly-ami-backup"
-  description         = "Triggers every weekday at 3 AM EST"
-  schedule_expression = "cron(0 8 ? * MON-FRI *)"
+  description         = "Triggers every weekday at 3 AM CST"
+  schedule_expression = "cron(0 9 ? * MON-FRI *)" # 3 AM CST (UTC-9)
 }
 
 # Target for the Event Rule
