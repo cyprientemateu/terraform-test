@@ -200,50 +200,27 @@ resource "aws_instance" "ec2" {
 
   user_data = <<-EOF
               #!/bin/bash
-              apt-get update -y
-
-              # Install Docker dependencies
-              apt-get install -y \
-                ca-certificates \
-                curl \
-                gnupg \
-                lsb-release
-
-              # Add Docker GPG key
-              install -m 0755 -d /etc/apt/keyrings
-              curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-              chmod a+r /etc/apt/keyrings/docker.gpg
-
-              # Add Docker repository
-              echo \
-                "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
-                https://download.docker.com/linux/ubuntu \
-                $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-              # Install Docker
-              apt-get update -y
-              apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-              # Start and enable Docker
-              systemctl enable docker
-              systemctl start docker
-
-              # Optional: Add ubuntu user to docker group
-              usermod -aG docker ubuntu
-
-              # Run Rancher container
-              docker run -d --restart=unless-stopped \
-                -p 80:80 -p 443:443 \
-                --privileged \
-                --name rancher-server \
-                rancher/rancher:latest
-
+              apt update -y
+              apt install -y apache2
+              systemctl start apache2
+              systemctl enable apache2
+              echo "<h1>Hello from Terraform EC2 Ubuntu!</h1>" > /var/www/html/index.html
+              
               # If additional volume exists, format and mount it
               if [ -b /dev/nvme1n1 ]; then
+                # Format the additional volume
                 mkfs.ext4 /dev/nvme1n1
+                
+                # Create mount point
                 mkdir -p /mnt/data
+                
+                # Mount the volume
                 mount /dev/nvme1n1 /mnt/data
+                
+                # Add to fstab for persistent mounting
                 echo '/dev/nvme1n1 /mnt/data ext4 defaults,nofail 0 2' >> /etc/fstab
+                
+                # Set permissions
                 chmod 755 /mnt/data
                 chown ubuntu:ubuntu /mnt/data
               fi
